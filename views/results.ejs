@@ -1,0 +1,36 @@
+<!-- results.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qualification Results</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Qualification Results</h1>
+    </div>
+    <div class="container">
+        <h2>Qualified Courses</h2>
+        <div id="qualified-courses">
+            <% if (qualifiedCourses.length > 0) { %>
+                <ul>
+                    <% qualifiedCourses.forEach(courseName => {
+                        const course = programData.find(program => program.programName === courseName);
+                        %>
+                        <li>
+                            <strong>Institution:</strong> <%= course.institution %><br>
+                            <strong>Institution Type:</strong> <%= course.institutionType %><br>
+                            <strong>Program Name:</strong> <%= course.programName %><br>
+                            <strong>Program Cost:</strong> <%= course.programCost %><br>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>No qualified courses found.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
